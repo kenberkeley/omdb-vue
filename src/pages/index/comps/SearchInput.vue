@@ -2,7 +2,7 @@
   <div class="field has-addons">
     <div class="control has-icons-left">
       <span class="icon is-left">
-        <fa-icon :icon="searchIcon" />
+        <fa-icon :icon="faSearch" />
       </span>
       <input
         v-model="keywords"
@@ -24,12 +24,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export default {
   components: { FaIcon },
   data: () => ({
-    keywords: ''
-  }),
-  computed: {
-    searchIcon () {
-      return faSearch
-    }
-  }
+    keywords: '',
+    faSearch
+  })
 }
 </script>
