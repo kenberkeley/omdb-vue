@@ -1,10 +1,12 @@
 <template>
   <div>
-    index
+    <search-input />
   </div>
 </template>
 <script>
-export default {
+import SearchInput from './comps/SearchInput'
 
+export default {
+  components: { SearchInput }
 }
 </script>
