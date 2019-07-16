@@ -1,9 +1,9 @@
 <template>
-  <div class="-search-panel">
+  <section>
     <search-input :default-value="search" />
     <results-list />
     <pagination v-if="!isLessThan1Page" />
-  </div>
+  </section>
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
@@ -38,13 +38,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@import "@/assets/styles/bulma.scss";
-
-.-search-panel {
-  @include from($tablet) {
-    border-right: 1px solid #ccc;
-    padding-right: .75rem;
-  }
-}
-</style>
