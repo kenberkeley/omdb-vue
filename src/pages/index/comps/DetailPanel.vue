@@ -14,16 +14,19 @@
         </article>
       </div>
       <div class="column">
-        <pic
-          :src="detail.Poster"
-          :alt="`Poster of ${detail.Title}`"
-          class="is-pulled-left"
-        />
+        <figure class="-poster is-clearfix">
+          <pic
+            :src="detail.Poster"
+            :alt="`Poster of ${detail.Title}`"
+            class="is-pulled-left"
+          />
+        </figure>
       </div>
     </div>
   </div>
 </template>
 <script>
+import animateScrollTo from 'animated-scroll-to'
 import pick from 'lodash/pick'
 import ajax from '@/utils/ajax'
 import Pic from '@/components/Pic'
@@ -56,6 +59,9 @@ export default {
       })
       this.isLoading = false
       this.detail = pick(resData, this.REQUIRED_FIELDS)
+      this.$nextTick(() => {
+        animateScrollTo(this.$el) // TODO: unnecessary if >= desktop
+      })
     }
   },
   filters: {
@@ -93,10 +99,16 @@ export default {
   }
 
   // refer to  https://github.com/jgthms/bulma/issues/151#issuecomment-204103843
-  .content ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  .content {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .-poster {
+    min-height: 400px;
   }
 }
 </style>
