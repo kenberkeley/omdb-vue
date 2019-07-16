@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="-search-panel">
     <search-input :default-value="search" />
     <results-list />
     <pagination v-if="!isLessThan1Page" />
@@ -38,3 +38,13 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "@/assets/styles/bulma.scss";
+
+.-search-panel {
+  @include from($tablet) {
+    border-right: 1px solid #ccc;
+    padding-right: .75rem;
+  }
+}
+</style>
