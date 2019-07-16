@@ -25,7 +25,9 @@
 import { createNamespacedHelpers } from 'vuex'
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/vue-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
-const { mapState, mapGetters, mapActions } = createNamespacedHelpers('search')
+import { QUERY_PAGE_NUM } from '@/constants/routeFields'
+
+const { mapState, mapGetters } = createNamespacedHelpers('search')
 
 export default {
   components: { FaIcon },
@@ -35,20 +37,22 @@ export default {
   }),
   computed: {
     ...mapState([
-      'page',
       'total',
       'isLoading'
     ]),
     ...mapGetters([
+      'page',
       'hasNextPage'
     ])
   },
   methods: {
-    ...mapActions([
-      'search'
-    ]),
     turnPage (page) {
-      this.search({ page })
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          [QUERY_PAGE_NUM]: page
+        }
+      })
     }
   }
 }

@@ -1,5 +1,6 @@
 import ajax from '@/utils/ajax'
 import { PARAMS, TYPES, PER_PAGE } from '@/constants/OMDb'
+import { QUERY_SEARCH, QUERY_PAGE_NUM } from '@/constants/routeFields'
 
 // Mutation types
 export const SET_STATE = 'SET_STATE'
@@ -7,8 +8,6 @@ export const SET_STATE = 'SET_STATE'
 export default {
   namespaced: true,
   state: {
-    search: '',
-    page: 0,
     isLoading: false,
     results: [/* {
       Title<string>
@@ -20,10 +19,18 @@ export default {
     total: 0
   },
   getters: {
+    search (state, getters, rootState) {
+      const search = rootState.route.query[QUERY_SEARCH]
+      return search ? decodeURIComponent(search) : ''
+    },
+    page (state, getters, rootState) {
+      const page = +rootState.route.query[QUERY_PAGE_NUM]
+      return Number.isInteger(page) && page >= 1 ? page : 1
+    },
     isLessThan1Page ({ total }) {
       return total <= PER_PAGE
     },
-    hasNextPage ({ page, total }) {
+    hasNextPage ({ total }, { page }) {
       return page * PER_PAGE < total
     }
   },
@@ -33,19 +40,17 @@ export default {
     }
   },
   actions: {
-    async search ({ commit, state }, { search = state.search, page = 1 }) {
+    async search ({ commit, getters }) {
       commit(SET_STATE, { isLoading: true })
 
       const { Search, totalResults } = await ajax({
         params: {
           [PARAMS.TYPE]: TYPES.MOVIE,
-          [PARAMS.SEARCH]: search,
-          [PARAMS.PAGE]: page
+          [PARAMS.SEARCH]: getters.search,
+          [PARAMS.PAGE]: getters.page
         }
       })
       commit(SET_STATE, {
-        search,
-        page,
         isLoading: false,
         results: Search,
         total: totalResults

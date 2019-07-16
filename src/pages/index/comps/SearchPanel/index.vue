@@ -1,20 +1,34 @@
 <template>
   <div>
-    <search-input />
+    <search-input :default-value="search" />
     <results-list />
     <pagination v-if="!isLessThan1Page" />
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
 import SearchInput from './SearchInput'
 import ResultsList from './ResultsList/'
 import Pagination from './Pagination'
+import { QUERY_SEARCH, QUERY_PAGE_NUM } from '@/constants/routeFields'
+
+const { mapGetters, mapActions } = createNamespacedHelpers('search')
 
 export default {
   components: { SearchInput, ResultsList, Pagination },
-  computed: mapGetters('search', [
+  computed: mapGetters([
+    'search',
     'isLessThan1Page'
-  ])
+  ]),
+  mounted () {
+    this.search && this.runSearch()
+  },
+  watch: {
+    [`$route.query.${QUERY_SEARCH}`]: 'runSearch',
+    [`$route.query.${QUERY_PAGE_NUM}`]: 'runSearch'
+  },
+  methods: mapActions({
+    runSearch: 'search'
+  })
 }
 </script>

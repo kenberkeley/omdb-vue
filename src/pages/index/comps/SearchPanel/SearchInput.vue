@@ -20,23 +20,28 @@
   </form>
 </template>
 <script>
-import { mapActions } from 'vuex'
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/vue-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { QUERY_SEARCH, QUERY_PAGE_NUM } from '@/constants/routeFields'
 
 export default {
   components: { FaIcon },
-  data: () => ({
-    keywords: '',
-    faSearch
-  }),
+  props: {
+    defaultValue: { type: String, default: '' }
+  },
+  data () {
+    return {
+      keywords: this.defaultValue,
+      faSearch
+    }
+  },
   methods: {
-    ...mapActions('search', [
-      'search'
-    ]),
     onSearch () {
-      this.search({
-        search: this.keywords
+      this.$router.push({
+        query: {
+          [QUERY_SEARCH]: encodeURIComponent(this.keywords),
+          [QUERY_PAGE_NUM]: 1
+        }
       })
     }
   }
