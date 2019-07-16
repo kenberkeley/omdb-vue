@@ -1,19 +1,18 @@
 <template>
   <form @submit.prevent="onSearch">
     <div class="field has-addons">
-      <div class="control has-icons-left">
-        <span class="icon is-left">
-          <fa-icon :icon="faSearch" />
-        </span>
+      <div class="control is-expanded">
         <input
-          class="input"
+          class="input is-medium"
           v-model.trim="keywords"
           placeholder="Search movies..."
         />
       </div>
       <div class="control">
-        <button type="submit" class="button is-primary">
-          Search
+        <button type="submit" class="button is-medium is-primary">
+          <span class="icon">
+            <fa-icon :icon="faSearch" />
+          </span>
         </button>
       </div>
     </div>
