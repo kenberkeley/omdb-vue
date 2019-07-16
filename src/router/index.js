@@ -5,9 +5,7 @@ import routes from './routes'
 
 Vue.use(Router)
 
-const router = new Router({
+export default new Router({
   mode: 'hash', // deployed on Github Pages
   routes
 })
-
-export default router

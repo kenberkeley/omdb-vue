@@ -10,7 +10,6 @@ import { mapGetters } from 'vuex'
 import SearchInput from './SearchInput'
 import ResultsList from './ResultsList/'
 import Pagination from './Pagination'
-import { PER_PAGE } from '@/constants/OMDb'
 
 export default {
   components: { SearchInput, ResultsList, Pagination },
