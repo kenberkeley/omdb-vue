@@ -6,6 +6,7 @@
   </section>
 </template>
 <script>
+import animateScrollTo from 'animated-scroll-to'
 import { createNamespacedHelpers } from 'vuex'
 import debounce from 'lodash/debounce'
 import SearchInput from './SearchInput'
@@ -26,7 +27,10 @@ export default {
   },
   watch: {
     [`$route.query.${QUERY_SEARCH}`]: 'runSearch',
-    [`$route.query.${QUERY_PAGE_NUM}`]: 'runSearch'
+    [`$route.query.${QUERY_PAGE_NUM}`] () {
+      animateScrollTo(this.$el)
+      this.runSearch()
+    }
   },
   methods: {
     ...mapActions({
