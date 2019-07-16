@@ -1,29 +1,45 @@
 <template>
-  <router-link class="-result-item" :to="url">
-    <div class="box">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-6 -result-item-title">
-            {{ title }}
-          </p>
-          <p class="subtitle is-7 is-pulled-right">
-            {{ year }}
-          </p>
+  <li class="-result-item">
+    <router-link :to="url">
+      <div class="box">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-6 -result-item-title">
+              {{ title }}
+              <fa-icon
+                v-if="shouldShowStar"
+                :icon="faStar"
+                class="is-pulled-right has-text-grey"
+              />
+            </p>
+            <p class="subtitle is-7 is-pulled-right">
+              {{ year }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </router-link>
+    </router-link>
+  </li>
 </template>
 <script>
+import { FontAwesomeIcon as FaIcon } from '@fortawesome/vue-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { QUERY_MOVIE_ID } from '@/constants/routeFields'
 
 export default {
+  components: { FaIcon },
   props: {
     id: { type: String, required: true },
     title: { type: String, required: true },
     year: { type: String, required: true }
   },
+  data: () => ({
+    faStar
+  }),
   computed: {
+    shouldShowStar () {
+      return this.$route.query[QUERY_MOVIE_ID] === this.id
+    },
     url () {
       const { $route, id } = this
       return {
@@ -42,7 +58,11 @@ export default {
 
 .-result-item {
   display: block;
-  margin-bottom: .5rem;
+  margin: .5rem 0;
+
+  > a {
+    display: block;
+  }
 
   &:hover {
     .-result-item-title {

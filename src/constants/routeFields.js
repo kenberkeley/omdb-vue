@@ -1,4 +1,4 @@
-export const QUERY_MOVIE_ID = 'movieId'
+export const QUERY_MOVIE_ID = 'id'
 
 export const QUERY_SEARCH = 'search'
 

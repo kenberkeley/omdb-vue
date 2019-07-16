@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <ul>
     <result-item
       v-for="item in results"
       :key="item.imdbID"
@@ -7,7 +7,7 @@
       :title="item.Title"
       :year="item.Year"
     />
-  </section>
+  </ul>
 </template>
 <script>
 import { mapState } from 'vuex'
