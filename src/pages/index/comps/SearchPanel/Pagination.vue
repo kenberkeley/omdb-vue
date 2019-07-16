@@ -7,9 +7,9 @@
       @click="turnPage(page - 1)">
       <fa-icon :icon="faCaretLeft" />
     </button>
-    <span class="pagination-list">
+    <small class="pagination-list">
       Page {{ page }}, {{ total }} results
-    </span>
+    </small>
     <button
       aria-label="next page"
       class="button is-medium pagination-next"
