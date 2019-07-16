@@ -34,14 +34,21 @@ export default {
       faSearch
     }
   },
+  watch: {
+    keywords (keywords) {
+      if (!keywords) {
+        this.resetQuery()
+      }
+    }
+  },
   methods: {
+    resetQuery () {
+      this.$router.push({ query: {} })
+    },
     onSearch () {
-      const { keywords } = this
-      if (!keywords) return
-
       this.$router.push({
         query: {
-          [QUERY_SEARCH]: encodeURIComponent(keywords),
+          [QUERY_SEARCH]: encodeURIComponent(this.keywords),
           [QUERY_PAGE_NUM]: 1
         }
       })

@@ -42,12 +42,17 @@ export default {
   actions: {
     // TODO: cache the results?
     async search ({ commit, getters }) {
-      commit(SET_STATE, { isLoading: true })
+      const { search } = getters
+      if (!search) {
+        commit(SET_STATE, { results: [], total: 0 })
+        return
+      }
 
+      commit(SET_STATE, { isLoading: true })
       const { Search, totalResults } = await ajax({
         params: {
           [PARAMS.TYPE]: TYPES.MOVIE,
-          [PARAMS.SEARCH]: getters.search,
+          [PARAMS.SEARCH]: search,
           [PARAMS.PAGE]: getters.page
         }
       })
