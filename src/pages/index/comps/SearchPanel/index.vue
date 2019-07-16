@@ -7,6 +7,7 @@
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex'
+import debounce from 'lodash/debounce'
 import SearchInput from './SearchInput'
 import ResultsList from './ResultsList/'
 import Pagination from './Pagination'
@@ -27,8 +28,13 @@ export default {
     [`$route.query.${QUERY_SEARCH}`]: 'runSearch',
     [`$route.query.${QUERY_PAGE_NUM}`]: 'runSearch'
   },
-  methods: mapActions({
-    runSearch: 'search'
-  })
+  methods: {
+    ...mapActions({
+      _runSearch: 'search'
+    }),
+    runSearch: debounce(function () {
+      this._runSearch()
+    })
+  }
 }
 </script>
