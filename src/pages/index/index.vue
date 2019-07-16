@@ -1,18 +1,24 @@
 <template>
   <div class="columns">
-    <div class="column is-one-thirds-tablet is-one-quarter-desktop">
+    <div class="column">
       <search-panel />
     </div>
-    <div class="column is-two-thirds-tablet is-three-quarter-desktop">
-      <detail-panel />
+    <div v-if="movieId" class="column is-two-thirds">
+      <detail-panel :movie-id="movieId" />
     </div>
   </div>
 </template>
 <script>
 import SearchPanel from './comps/SearchPanel/'
 import DetailPanel from './comps/DetailPanel'
+import { QUERY_MOVIE_ID } from '@/constants/routeFields'
 
 export default {
-  components: { SearchPanel, DetailPanel }
+  components: { SearchPanel, DetailPanel },
+  computed: {
+    movieId () {
+      return this.$route.query[QUERY_MOVIE_ID]
+    }
+  }
 }
 </script>

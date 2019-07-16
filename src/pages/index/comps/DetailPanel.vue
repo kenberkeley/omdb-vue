@@ -17,6 +17,7 @@
         <pic
           :src="detail.Poster"
           :alt="`Poster of ${detail.Title}`"
+          class="is-pulled-left"
         />
       </div>
     </div>
@@ -27,35 +28,30 @@ import pick from 'lodash/pick'
 import ajax from '@/utils/ajax'
 import Pic from '@/components/Pic'
 import { PARAMS, TYPES } from '@/constants/OMDb'
-import { QUERY_MOVIE_ID } from '@/constants/routeFields'
 
 export default {
   components: { Pic },
+  props: {
+    movieId: { type: String, required: true }
+  },
   data: () => ({
     REQUIRED_FIELDS: 'Poster Title Year Genre Plot Language Director Actors Runtime'.split(' '),
     isLoading: false,
     detail: null // <object - with REQUIRED_FIELDS>
   }),
-  computed: {
-    movieId () {
-      return this.$route.query[QUERY_MOVIE_ID]
-    }
-  },
   watch: {
     movieId: {
-      handler (id) {
-        id && this.fetchDetail(id)
-      },
+      handler: 'fetchDetail',
       immediate: true
     }
   },
   methods: {
-    async fetchDetail (id) {
+    async fetchDetail () {
       this.isLoading = true
       const resData = await ajax({
         params: {
           [PARAMS.TYPE]: TYPES.MOVIE,
-          [PARAMS.ID]: id
+          [PARAMS.ID]: this.movieId
         }
       })
       this.isLoading = false
