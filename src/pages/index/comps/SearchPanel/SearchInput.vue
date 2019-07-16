@@ -37,9 +37,12 @@ export default {
   },
   methods: {
     onSearch () {
+      const { keywords } = this
+      if (!keywords) return
+
       this.$router.push({
         query: {
-          [QUERY_SEARCH]: encodeURIComponent(this.keywords),
+          [QUERY_SEARCH]: encodeURIComponent(keywords),
           [QUERY_PAGE_NUM]: 1
         }
       })
