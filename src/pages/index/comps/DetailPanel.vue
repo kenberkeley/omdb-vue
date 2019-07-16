@@ -6,7 +6,7 @@
         :alt="`Poster of ${detail.Title}`"
         class="is-pulled-right"
       />
-      <h1>{{ detail.Title }}</h1>
+      <h1>{{ detail.Title }} ({{ detail.Year }})</h1>
       <p>{{ detail.Genre }}</p>
       <p>{{ detail.Plot }}</p>
       <ul>
@@ -27,7 +27,7 @@ import { QUERY_MOVIE_ID } from '@/constants/routeFields'
 export default {
   components: { Pic },
   data: () => ({
-    REQUIRED_FIELDS: 'Poster Title Genre Plot Language Director Actors Runtime'.split(' '),
+    REQUIRED_FIELDS: 'Poster Title Year Genre Plot Language Director Actors Runtime'.split(' '),
     isLoading: false,
     detail: null // <object - with REQUIRED_FIELDS>
   }),
