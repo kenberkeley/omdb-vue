@@ -1,6 +1,11 @@
 <template>
   <div :class="['-detail-panel', { 'is-loading': isLoading }]">
     <article v-if="detail" class="content">
+      <pic
+        :src="detail.Poster"
+        :alt="`Poster of ${detail.Title}`"
+        class="is-pulled-right"
+      />
       <h1>{{ detail.Title }}</h1>
       <p>{{ detail.Genre }}</p>
       <p>{{ detail.Plot }}</p>
@@ -15,10 +20,12 @@
 <script>
 import pick from 'lodash/pick'
 import ajax from '@/utils/ajax'
+import Pic from '@/components/Pic'
 import { PARAMS, TYPES } from '@/constants/OMDb'
 import { QUERY_MOVIE_ID } from '@/constants/routeFields'
 
 export default {
+  components: { Pic },
   data: () => ({
     REQUIRED_FIELDS: 'Poster Title Genre Plot Language Director Actors Runtime'.split(' '),
     isLoading: false,
