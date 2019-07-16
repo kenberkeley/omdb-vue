@@ -1,20 +1,25 @@
 <template>
   <div :class="['-detail-panel', { 'is-loading': isLoading }]">
-    <article v-if="detail" class="content">
-      <pic
-        :src="detail.Poster"
-        :alt="`Poster of ${detail.Title}`"
-        class="is-pulled-right"
-      />
-      <h1>{{ detail.Title }} ({{ detail.Year }})</h1>
-      <p>{{ detail.Genre }}</p>
-      <p>{{ detail.Plot }}</p>
-      <ul>
-        <li v-for="field in REQUIRED_FIELDS.slice(-4)" :key="field">
-          <b>{{ field | labelify }}:</b> {{ detail[field] }}
-        </li>
-      </ul>
-    </article>
+    <div v-if="detail" class="columns">
+      <div class="column">
+        <article class="content">
+          <h1>{{ detail.Title }} ({{ detail.Year }})</h1>
+          <p>{{ detail.Genre }}</p>
+          <p>{{ detail.Plot }}</p>
+          <ul>
+            <li v-for="field in REQUIRED_FIELDS.slice(-4)" :key="field">
+              <b>{{ field | labelify }}:</b> {{ detail[field] }}
+            </li>
+          </ul>
+        </article>
+      </div>
+      <div class="column">
+        <pic
+          :src="detail.Poster"
+          :alt="`Poster of ${detail.Title}`"
+        />
+      </div>
+    </div>
   </div>
 </template>
 <script>
