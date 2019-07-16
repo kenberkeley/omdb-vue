@@ -2,7 +2,7 @@
   <nav class="pagination is-centered" aria-label="pagination" role="navigation">
     <button
       aria-label="previous page"
-      class="button pagination-previous"
+      class="button is-medium pagination-previous"
       :disabled="page <= 1"
       @click="turnPage(page - 1)">
       <fa-icon :icon="faCaretLeft" />
@@ -12,7 +12,7 @@
     </span>
     <button
       aria-label="next page"
-      class="button pagination-next"
+      class="button is-medium pagination-next"
       :disabled="!hasNextPage"
       @click="turnPage(page + 1)">
       <fa-icon :icon="faCaretRight" />
