@@ -5,6 +5,6 @@
 </template>
 <style>
 #app {
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 </style>

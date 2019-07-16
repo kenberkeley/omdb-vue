@@ -88,7 +88,7 @@ export default {
   @include from($tablet) {
     margin-top: .5rem;
     padding-left: 2rem;
-    height: calc(100vh - 1.75rem);
+    height: calc(100vh - 2.75rem);
     border-left: 1px solid #ccc;
   }
 
