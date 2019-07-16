@@ -40,6 +40,7 @@ export default {
     }
   },
   actions: {
+    // TODO: cache the results?
     async search ({ commit, getters }) {
       commit(SET_STATE, { isLoading: true })
 
