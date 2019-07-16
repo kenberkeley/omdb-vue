@@ -1,16 +1,12 @@
 <template>
   <div>
-    <search-input />
-    <results-list />
-    <pagination />
+    <search-panel />
   </div>
 </template>
 <script>
-import SearchInput from './comps/SearchInput'
-import ResultsList from './comps/ResultsList/'
-import Pagination from './comps/Pagination'
+import SearchPanel from './comps/SearchPanel'
 
 export default {
-  components: { SearchInput, ResultsList, Pagination }
+  components: { SearchPanel }
 }
 </script>

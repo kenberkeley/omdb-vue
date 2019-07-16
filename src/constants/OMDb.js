@@ -19,3 +19,5 @@ export const TYPES = {
   // EPISODE: 'episode',
   MOVIE: 'movie'
 }
+
+export const PER_PAGE = 10
