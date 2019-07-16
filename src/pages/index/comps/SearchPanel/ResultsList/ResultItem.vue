@@ -4,7 +4,7 @@
       <div class="box">
         <div class="media">
           <div class="media-content">
-            <p class="title is-6 -result-item-title">
+            <p class="-result-item-title title is-6 is-clearfix">
               {{ title }}
               <fa-icon
                 v-if="shouldShowStar"
