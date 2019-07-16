@@ -3,7 +3,6 @@
     <button
       aria-label="previous page"
       class="button pagination-previous"
-      :class="{ 'is-loading': isLoading }"
       :disabled="page <= 1"
       @click="turnPage(page - 1)">
       <fa-icon :icon="faCaretLeft" />
@@ -14,7 +13,6 @@
     <button
       aria-label="next page"
       class="button pagination-next"
-      :class="{ 'is-loading': isLoading }"
       :disabled="!hasNextPage"
       @click="turnPage(page + 1)">
       <fa-icon :icon="faCaretRight" />
@@ -47,6 +45,8 @@ export default {
   },
   methods: {
     turnPage (page) {
+      if (this.isLoading) return
+
       this.$router.push({
         query: {
           ...this.$route.query,
