@@ -1,6 +1,6 @@
 <template>
   <li class="-result-item">
-    <router-link :to="url">
+    <router-link :to="link">
       <div class="box">
         <div class="media">
           <div class="media-content">
@@ -40,7 +40,7 @@ export default {
     shouldShowStar () {
       return this.$route.query[QUERY_MOVIE_ID] === this.id
     },
-    url () {
+    link () {
       const { $route, id } = this
       return {
         path: $route.path,
