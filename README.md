@@ -56,6 +56,10 @@ Reference:
 ## § Deployment
 
 ```sh
+# Compile for production
+$ npm run build
+# npm run build -- --report # generate report.html to analyze bundle content
+
 # Publish to Github Pages (https://bit.ly/2YeUyzG)
 $ npm run deploy
 ```
