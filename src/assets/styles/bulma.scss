@@ -27,4 +27,4 @@ $link-focus-border: $primary;
 
 @import "~bulma";
 
-// TODO: eliminate unused styles by PurgeCSS, etc
+// Unused CSS will be eliminated by PurgeCSS (see <projectRoot>/vue.config.js)
