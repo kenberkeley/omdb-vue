@@ -108,7 +108,7 @@ export default {
   }
 
   .-poster {
-    min-height: 400px;
+    min-height: 450px;
   }
 }
 </style>
