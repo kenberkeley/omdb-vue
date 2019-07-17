@@ -12,6 +12,7 @@ Click [here](https://kenberkeley.github.io/omdb-vue).
 * UI lib: Bulma + Font Awesome 5, Fully Responsive & Mobile First!
 * [Eliminate unused styles](https://bit.ly/2Lp4397) by [PurgeCSS](https://www.purgecss.com)
 * [Auto polyfill](https://bit.ly/2NZZZyv) ([browser compatibility list](https://bit.ly/2YabfvT)) powered by [Polyfill.io](https://github.com/Financial-Times/polyfill-service)
+* Save query parameters in the URL (inspired by [LinkedIn Jobs](https://linkedin.com/jobs))
 
 ## $ Quick Start
 
