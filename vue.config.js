@@ -16,7 +16,9 @@ module.exports = {
           './public/index.html',
           './src/**/*.vue',
           './src/**/*.js'
-        ])
+        ]),
+        whitelistPatterns: [/nprogress/],
+        whitelistPatternsChildren: [/nprogress/]
       })
     ]
   }
