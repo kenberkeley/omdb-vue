@@ -9,7 +9,7 @@ Click [here](https://kenberkeley.github.io/omdb-vue).
 ## § Features
 
 * Basics: Vue + Vuex + Vue Router + Axios
-* UI lib: Bulma + Font Awesome 5 (Fully Responsive!)
+* UI lib: Bulma + Font Awesome 5, Fully Responsive & Mobile First!
 * [Eliminate unused styles](https://bit.ly/2Lp4397) by [PurgeCSS](https://www.purgecss.com)
 * [Auto polyfill](https://bit.ly/2NZZZyv) ([browser compatibility list](https://bit.ly/2YabfvT)) powered by [Polyfill.io](https://github.com/Financial-Times/polyfill-service)
 
