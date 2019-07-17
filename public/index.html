@@ -12,6 +12,11 @@
       <strong>We're sorry but omdb-vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <script>
+      if (typeof Symbol === 'undefined') { // loading polyfill only when needed (refer to https://bit.ly/2IPNCSZ)
+        document.write('<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=es6,es7&flags=gated"><\/script>')
+      }
+    </script>
     <!-- built files will be auto injected -->
   </body>
 </html>
