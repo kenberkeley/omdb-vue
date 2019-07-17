@@ -65,3 +65,4 @@ Check out [Deployment (Vue CLI Doc)](https://cli.vuejs.org/guide/deployment.html
 ## § TODO
 
 * Testings (Unit & E2E)
+* OMDb API request limit (temporary solution: replace `VUE_APP_OMDB_API_KEY` in [`.env`](./.env) with the [new](https://www.omdbapi.com/apikey.aspx) one)
