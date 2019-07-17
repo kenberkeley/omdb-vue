@@ -1,4 +1,4 @@
-# omdbapi-vue
+# omdb-vue
 
 ## Project setup
 ```
